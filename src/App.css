@@ -28,3 +28,11 @@
   color: red;
   background-color: #fff;
 }
+/* home-page */
+.home-page {
+  height: 100%;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
