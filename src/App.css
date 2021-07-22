@@ -7,7 +7,24 @@
 }
 .global-main-layout-aside {
   height: 100vh;
+  background-color: #ececec;
+  overflow-y: auto;
 }
 .global-main-layout-container {
   flex: 1;
+  padding: 20px;
+}
+/* global-side-nav */
+.global-side-nav {
+  padding: 20px 0;
+  font-size: 16px;
+}
+.global-side-nav-item {
+  cursor: pointer;
+  word-break: break-word;
+  padding: 10px 20px;
+}
+.global-side-nav-item-active {
+  color: red;
+  background-color: #fff;
 }
