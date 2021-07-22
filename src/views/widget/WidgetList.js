@@ -1,14 +1,11 @@
-import Gauges, { BaseGauge, GradientGauge } from './gauge';
+import { Divider } from 'antd';
+
+import Gauges from './gauge';
+import Liquids from './liquid';
 import './WidgetList.css';
 export default function WidgetList() {
   const widgetStyle = { height: 200 };
-  console.log(Gauges, '===');
-  for (const key in Gauges) {
-    if (Object.hasOwnProperty.call(Gauges, key)) {
-      const Gauge = Gauges[key];
-      console.log(Gauge, key, '----');
-    }
-  }
+
   return (
     <div className="widget-list-page">
       <div className="gallery-item-box">
@@ -20,15 +17,15 @@ export default function WidgetList() {
             </div>
           );
         })}
-        {/* {new Array(13).fill('widget').map((v, k) => (
-          <div className="gallery-item-chart" key={k}>
-            {k % 2 === 0 ? (
-              <BaseGauge style={widgetStyle} />
-            ) : (
-              <GradientGauge style={widgetStyle} />
-            )}
-          </div>
-        ))} */}
+        <Divider />
+        {Object.keys(Liquids).map((key) => {
+          const Liquid = Liquids[key];
+          return (
+            <div className="gallery-item-chart" key={key}>
+              <Liquid style={widgetStyle} />
+            </div>
+          );
+        })}
       </div>
     </div>
   );
