@@ -1,3 +1,13 @@
-.App {
-  text-align: center;
+.app {
+  font-size: 14px;
+}
+/* global-main-layout */
+.global-main-layout {
+  display: flex;
+}
+.global-main-layout-aside {
+  height: 100vh;
+}
+.global-main-layout-container {
+  flex: 1;
 }
