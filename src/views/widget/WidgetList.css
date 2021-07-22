@@ -1,0 +1,9 @@
+.widget-list-page {
+}
+.widget-item {
+  min-width: 200px;
+  height: 240px;
+  background-color: #e3e3e3;
+  padding: 20px;
+  margin: 20px;
+}

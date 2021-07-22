@@ -14,6 +14,8 @@
 .global-main-layout-container {
   flex: 1;
   padding: 20px;
+  height: 100vh;
+  overflow-y: auto;
 }
 /* global-side-nav */
 .global-side-nav {
@@ -29,6 +31,15 @@
   color: red;
   background-color: #fff;
 }
+/* global-flex-wrapper */
+.global-flex-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.global-flex-item {
+}
+
 /* home-page */
 .home-page {
   height: 100%;
