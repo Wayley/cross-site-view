@@ -6,21 +6,12 @@ import { CanvasRenderer } from 'echarts/renderers';
 
 echarts.use([ToolboxComponent, TooltipComponent, GaugeChart, CanvasRenderer]);
 
-const CarGauge = () => {
+const CarGauge = ({ ...props }) => {
   const [main, setMain] = useState(null);
   const smallCircle = '60%';
   const mediumCircle = '80%';
   const option = {
     backgroundColor: '#000',
-    tooltip: {
-      formatter: '{a} <br/>{b} : {c}%',
-    },
-    toolbox: {
-      feature: {
-        restore: {},
-        saveAsImage: {},
-      },
-    },
     series: [
       // left
       {
@@ -531,9 +522,7 @@ const CarGauge = () => {
     let myChart = echarts.init(main);
     myChart.setOption(option, true);
   }
-  return (
-    <div id="car-gauge-main" style={{ height: '100%', minHeight: 400 }}></div>
-  );
+  return <div id="car-gauge-main" {...props}></div>;
 };
 
 export default CarGauge;
