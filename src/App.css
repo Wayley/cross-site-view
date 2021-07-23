@@ -34,7 +34,6 @@
 /* gallery-item-box */
 .gallery-item-box {
   display: grid;
-  /* justify-content: space-evenly; */
   grid-gap: 12px;
   grid-template-columns: repeat(auto-fit, minmax(380px, 0.25fr));
 }
@@ -46,6 +45,7 @@
   border: 1px solid #f0f0f0;
   border-radius: 4px;
 }
+
 /* home-page */
 .home-page {
   height: 100%;
