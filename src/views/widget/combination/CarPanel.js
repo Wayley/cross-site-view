@@ -8,8 +8,10 @@ echarts.use([ToolboxComponent, TooltipComponent, GaugeChart, CanvasRenderer]);
 
 const CarGauge = ({ ...props }) => {
   const [main, setMain] = useState(null);
-  const smallCircle = '60%';
-  const mediumCircle = '80%';
+  const smallCircle = '58%';
+  const mediumCircle = '85%';
+  const leftX = '19%';
+  const rightX = '81%';
   const option = {
     backgroundColor: '#000',
     series: [
@@ -23,7 +25,7 @@ const CarGauge = ({ ...props }) => {
         endAngle: -315,
         splitNumber: 9,
         radius: smallCircle,
-        center: ['21%', '55%'],
+        center: [leftX, '55%'],
         axisLine: {
           lineStyle: {
             color: [[1, '#AE96A6']],
@@ -75,7 +77,7 @@ const CarGauge = ({ ...props }) => {
         endAngle: -305,
         splitNumber: 5,
         radius: smallCircle,
-        center: ['21%', '55%'],
+        center: [leftX, '55%'],
         axisLine: {
           lineStyle: {
             color: [[1, '#AE96A6']],
@@ -154,6 +156,7 @@ const CarGauge = ({ ...props }) => {
               [0.825, '#fff'],
               [1, '#f00'],
             ],
+            opacity: 0,
           },
         },
         splitLine: {
@@ -285,7 +288,7 @@ const CarGauge = ({ ...props }) => {
         endAngle: -150,
         splitNumber: 8,
         radius: smallCircle,
-        center: ['79%', '55%'],
+        center: [rightX, '55%'],
         axisLine: {
           lineStyle: {
             color: [[1, '#AE96A6']],
@@ -355,7 +358,7 @@ const CarGauge = ({ ...props }) => {
         endAngle: 55,
         splitNumber: 2,
         radius: '34%',
-        center: ['79%', '55.3%'],
+        center: [rightX, '55.3%'],
         axisLine: {
           lineStyle: {
             width: 9,
@@ -449,7 +452,7 @@ const CarGauge = ({ ...props }) => {
         clockwise: false,
         splitNumber: 2,
         radius: smallCircle,
-        center: ['79%', '55%'],
+        center: [rightX, '55%'],
         axisLine: {
           lineStyle: {
             color: [
