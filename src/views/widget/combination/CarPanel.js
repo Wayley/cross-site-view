@@ -529,7 +529,9 @@ const CarGauge = () => {
     let myChart = echarts.init(main);
     myChart.setOption(option, true);
   }
-  return <div id="car-gauge-main" style={{ height: '100%' }}></div>;
+  return (
+    <div id="car-gauge-main" style={{ height: '100%', minHeight: 400 }}></div>
+  );
 };
 
 export default CarGauge;
