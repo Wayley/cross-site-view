@@ -37,7 +37,7 @@ export default function WidgetList() {
             gridRowEnd: 3,
           }}
         >
-          <CarPanel />
+          <CarPanel style={{ height: 400 }} />
         </div>
         <div className="gallery-item-chart">
           <MeterGauge style={widgetStyle} />
