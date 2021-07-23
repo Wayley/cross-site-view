@@ -8,6 +8,8 @@ echarts.use([ToolboxComponent, TooltipComponent, GaugeChart, CanvasRenderer]);
 
 const CarGauge = () => {
   const [main, setMain] = useState(null);
+  const smallCircle = '60%';
+  const mediumCircle = '80%';
   const option = {
     backgroundColor: '#000',
     tooltip: {
@@ -29,7 +31,7 @@ const CarGauge = () => {
         startAngle: -30,
         endAngle: -315,
         splitNumber: 9,
-        radius: '35%',
+        radius: smallCircle,
         center: ['21%', '55%'],
         axisLine: {
           lineStyle: {
@@ -56,8 +58,8 @@ const CarGauge = () => {
           fontSize: 12,
           fontWeight: 800,
           fontFamily: 'Arial',
-          color: '#fff',
-          offsetCenter: [0, '-60%'],
+          color: '#f00',
+          offsetCenter: ['-50%', '65%'],
         },
         progress: {
           show: true,
@@ -81,7 +83,7 @@ const CarGauge = () => {
         startAngle: -140,
         endAngle: -305,
         splitNumber: 5,
-        radius: '35%',
+        radius: smallCircle,
         center: ['21%', '55%'],
         axisLine: {
           lineStyle: {
@@ -137,7 +139,7 @@ const CarGauge = () => {
         data: [
           {
             value: 0,
-            name: '当前位置：\n \n 中科路',
+            name: '位置: 荣超',
           },
         ],
       },
@@ -151,7 +153,7 @@ const CarGauge = () => {
         startAngle: 210,
         endAngle: -30,
         splitNumber: 8,
-        radius: '50%',
+        radius: mediumCircle,
         center: ['50%', '50%'],
         axisLine: {
           show: true,
@@ -210,7 +212,7 @@ const CarGauge = () => {
           fontSize: 12,
           fontWeight: 800,
           fontFamily: 'Arial',
-          offsetCenter: [0, '-50%'],
+          offsetCenter: [0, '-40%'],
         },
         data: [
           {
@@ -229,7 +231,7 @@ const CarGauge = () => {
         max: 8,
         z: 10,
         splitNumber: 8,
-        radius: '50%',
+        radius: mediumCircle,
         axisLine: {
           lineStyle: {
             width: 14,
@@ -253,7 +255,7 @@ const CarGauge = () => {
           show: false,
         },
         detail: {
-          offsetCenter: ['25%', '50%'],
+          offsetCenter: ['15%', '50%'],
           formatter: '{a|{value}}{b|km/h}',
           rich: {
             a: {
@@ -270,7 +272,7 @@ const CarGauge = () => {
               fontFamily: 'Arial',
               color: '#fff',
               rotate: 30,
-              padding: [0, 0, 20, 0],
+              padding: [0, 0, -10, 0],
             },
           },
         },
@@ -291,7 +293,7 @@ const CarGauge = () => {
         startAngle: 135,
         endAngle: -150,
         splitNumber: 8,
-        radius: '35%',
+        radius: smallCircle,
         center: ['79%', '55%'],
         axisLine: {
           lineStyle: {
@@ -455,7 +457,7 @@ const CarGauge = () => {
         endAngle: 310,
         clockwise: false,
         splitNumber: 2,
-        radius: '35%',
+        radius: smallCircle,
         center: ['79%', '55%'],
         axisLine: {
           lineStyle: {
