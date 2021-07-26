@@ -5,9 +5,14 @@ import { GaugeChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
 
 echarts.use([ToolboxComponent, TooltipComponent, GaugeChart, CanvasRenderer]);
-
+function generateRandom(lower, upper, fixed) {
+  return (Math.random() * (upper - lower + 1) + lower).toFixed(fixed) - 0;
+}
 const CarGauge = ({ ...props }) => {
   const [main, setMain] = useState(null);
+  const [speed, setSpeed] = useState(50);
+  const [rotatingSpeed, setRotatingSpeed] = useState(0.6);
+
   const smallCircle = '58%';
   const mediumCircle = '85%';
   const leftX = '19%';
@@ -63,7 +68,7 @@ const CarGauge = ({ ...props }) => {
         },
         data: [
           {
-            value: 250,
+            value: speed,
             name: 'km/h',
           },
         ],
@@ -131,7 +136,7 @@ const CarGauge = ({ ...props }) => {
         },
         data: [
           {
-            value: 0,
+            value: 50,
             name: '位置: 荣超',
           },
         ],
@@ -210,7 +215,7 @@ const CarGauge = ({ ...props }) => {
         },
         data: [
           {
-            value: 0.6,
+            value: rotatingSpeed,
             name: '1/min x 1000',
           },
         ],
@@ -273,7 +278,7 @@ const CarGauge = ({ ...props }) => {
         // value is speed
         data: [
           {
-            value: 0,
+            value: speed,
             name: '',
           },
         ],
@@ -311,11 +316,11 @@ const CarGauge = ({ ...props }) => {
         detail: {
           offsetCenter: ['-15%', 0],
           formatter: [
-            '{a|                  00:00}',
-            '{a|行驶时间       0:00}{b| h}',
-            '{a|行驶距离        0.0}{b| km}',
-            '{a|平均耗能        ---}{b| 1/100km}',
-            '{a|平均速度        ---}{b| km/h}',
+            `{a|                  ${new Date().toLocaleTimeString()}}`,
+            `{a|行驶时间       0:00}{b| h}`,
+            `{a|行驶距离        0.0}{b| km}`,
+            `{a|平均耗能        ---}{b| 1/100km}`,
+            `{a|平均速度        ---}{b| km/h}`,
           ].join('\n'),
           rich: {
             a: {
@@ -517,6 +522,14 @@ const CarGauge = ({ ...props }) => {
       },
     ],
   };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const speed = generateRandom(20, 180, 0);
+      const rotatingSpeed = generateRandom(1.2, 4, 1);
+      setSpeed(speed);
+      setRotatingSpeed(rotatingSpeed);
+    }, 1000);
+  }, []);
   useEffect(() => {
     const node = document.getElementById('car-gauge-main');
     setMain(node);
