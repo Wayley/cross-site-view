@@ -9,7 +9,7 @@ function generateRandom(lower, upper, fixed) {
   return (Math.random() * (upper - lower + 1) + lower).toFixed(fixed) - 0;
 }
 const CarGauge = ({ ...props }) => {
-  const [main, setMain] = useState(null);
+  const [chart, setChart] = useState(null);
   const [speed, setSpeed] = useState(50);
   const [rotatingSpeed, setRotatingSpeed] = useState(0.6);
 
@@ -523,7 +523,7 @@ const CarGauge = ({ ...props }) => {
     ],
   };
   useEffect(() => {
-    const interval = setInterval(() => {
+    setInterval(() => {
       const speed = generateRandom(20, 180, 0);
       const rotatingSpeed = generateRandom(1.2, 4, 1);
       setSpeed(speed);
@@ -531,12 +531,11 @@ const CarGauge = ({ ...props }) => {
     }, 1000);
   }, []);
   useEffect(() => {
-    const node = document.getElementById('car-gauge-main');
-    setMain(node);
+    const chart = echarts.init(document.getElementById('car-gauge-main'));
+    setChart(chart);
   }, []);
-  if (main) {
-    let myChart = echarts.init(main);
-    myChart.setOption(option, true);
+  if (chart) {
+    chart.setOption(option, true);
   }
   return <div id="car-gauge-main" {...props}></div>;
 };
