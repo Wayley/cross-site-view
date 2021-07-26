@@ -136,7 +136,7 @@ const CarGauge = ({ ...props }) => {
         },
         data: [
           {
-            value: 50,
+            value: speed,
             name: '位置: 荣超',
           },
         ],
