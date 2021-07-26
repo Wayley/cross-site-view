@@ -32,12 +32,20 @@ export default function WidgetList() {
           className="gallery-item-chart"
           style={{
             gridColumnStart: 1,
-            gridColumnEnd: 3,
+            gridColumnEnd: 4,
             gridRowStart: 1,
             gridRowEnd: 3,
+            backgroundColor: '#000',
+            overflow: 'auto',
           }}
         >
-          <CarPanel style={{ height: 400 }} />
+          <CarPanel
+            style={{
+              width: 1020,
+              height: 500,
+              margin: 'auto',
+            }}
+          />
         </div>
         <div className="gallery-item-chart">
           <MeterGauge style={widgetStyle} />
