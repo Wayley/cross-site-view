@@ -10,8 +10,12 @@ function generateRandom(lower, upper, fixed) {
 }
 const CarGauge = ({ ...props }) => {
   const [chart, setChart] = useState(null);
-  const [speed, setSpeed] = useState(50);
-  const [rotatingSpeed, setRotatingSpeed] = useState(0.6);
+  const defaultData = {
+    speed: 50,
+    rotatingSpeed: 0.6, // 转速600转
+    coolantTemperature: 90, // 冷却水温度
+  };
+  const [data, setData] = useState(defaultData);
 
   const smallCircle = '58%';
   const mediumCircle = '85%';
@@ -68,7 +72,7 @@ const CarGauge = ({ ...props }) => {
         },
         data: [
           {
-            value: speed,
+            value: data.speed,
             name: 'km/h',
           },
         ],
@@ -136,7 +140,7 @@ const CarGauge = ({ ...props }) => {
         },
         data: [
           {
-            value: speed,
+            value: data.speed,
             name: '位置: 荣超',
           },
         ],
@@ -215,7 +219,7 @@ const CarGauge = ({ ...props }) => {
         },
         data: [
           {
-            value: rotatingSpeed,
+            value: data.rotatingSpeed,
             name: '1/min x 1000',
           },
         ],
@@ -278,7 +282,7 @@ const CarGauge = ({ ...props }) => {
         // value is speed
         data: [
           {
-            value: speed,
+            value: data.speed,
             name: '',
           },
         ],
@@ -368,7 +372,7 @@ const CarGauge = ({ ...props }) => {
           lineStyle: {
             width: 9,
             color: [
-              [0.15, '#f00'],
+              [0.2, '#f00'],
               [1, 'rgba(255, 0, 0, 0)'],
             ],
           },
@@ -407,9 +411,9 @@ const CarGauge = ({ ...props }) => {
         },
         progress: {
           show: true,
-          width: 5,
+          width: 6,
           itemStyle: {
-            color: '#fff',
+            color: '#8DBAB7',
           },
         },
         anchor: {
@@ -442,7 +446,7 @@ const CarGauge = ({ ...props }) => {
         },
         data: [
           {
-            value: 0.85,
+            value: 0.7385,
             name: '',
           },
         ],
@@ -515,7 +519,7 @@ const CarGauge = ({ ...props }) => {
         },
         data: [
           {
-            value: -120,
+            value: data.coolantTemperature * -1,
             name: '',
           },
         ],
@@ -524,10 +528,12 @@ const CarGauge = ({ ...props }) => {
   };
   useEffect(() => {
     setInterval(() => {
-      const speed = generateRandom(20, 180, 0);
-      const rotatingSpeed = generateRandom(1.2, 4, 1);
-      setSpeed(speed);
-      setRotatingSpeed(rotatingSpeed);
+      const data = {
+        speed: generateRandom(20, 180, 0),
+        rotatingSpeed: generateRandom(1.2, 4, 1),
+        coolantTemperature: 90,
+      };
+      setData(data);
     }, 1000);
   }, []);
   useEffect(() => {
