@@ -357,8 +357,8 @@ const CarGauge = ({ ...props }) => {
         startAngle: 125,
         endAngle: 55,
         splitNumber: 2,
-        radius: '34%',
-        center: [rightX, '55.3%'],
+        radius: smallCircle,
+        center: [rightX, '55%'],
         axisLine: {
           lineStyle: {
             width: 9,
