@@ -6,6 +6,7 @@ import BaseGauge from './gauge/BaseGauge';
 import GradientGauge from './gauge/GradientGauge';
 import MeterGauge from './gauge/MeterGauge';
 import CarPanel from './combination/CarPanel';
+import Thermometer from './combination/Thermometer';
 
 export default function WidgetList() {
   const widgetStyle = { height: 200 };
@@ -35,26 +36,26 @@ export default function WidgetList() {
             gridColumnEnd: 4,
             gridRowStart: 1,
             gridRowEnd: 3,
-            backgroundColor: '#000',
-            overflow: 'auto',
           }}
         >
-          <CarPanel
+          <div
             style={{
-              width: 1020,
-              height: 500,
-              margin: 'auto',
+              backgroundColor: '#000',
+              overflow: 'auto',
             }}
-          />
+          >
+            <CarPanel
+              style={{
+                width: 1020,
+                height: 500,
+                margin: 'auto',
+              }}
+            />
+          </div>
         </div>
+
         <div className="gallery-item-chart">
-          <MeterGauge style={widgetStyle} />
-        </div>
-        <div className="gallery-item-chart">
-          <BaseGauge style={widgetStyle} />
-        </div>
-        <div className="gallery-item-chart">
-          <SphericalLiquid style={widgetStyle} />
+          <Thermometer style={{ height: 500 }} />
         </div>
       </div>
     </div>
