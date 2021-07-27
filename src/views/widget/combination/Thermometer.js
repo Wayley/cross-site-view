@@ -4,13 +4,22 @@ import * as echarts from 'echarts';
 const Thermometer = ({ ...props }) => {
   const [chart, setChart] = useState(null);
 
-  var TP_value = 40;
+  const TP_value = 31;
+  const max = 60; // 温度计最大值
+  const min = -60; // 温度计最小值
+  const highWire = 20; // 高温线
+  const lowWire = -20; // 低温线
+  const offset = 3;
+
+  // 当低于-30时，为了显示美观，指定位置
+  const boxPosition = TP_value < -30 ? [65, -70] : [65, 0];
+  // 超出最大/最小值时,显示最大/最小值和偏移量校正
+  const showValue =
+    TP_value > max ? max + offset : TP_value < min ? min - offset : TP_value;
+
+  var TP_txt = '';
   var kd = [];
   var Gradient = [];
-  var leftColor = '';
-  var showValue = '';
-  var boxPosition = [65, 0];
-  var TP_txt = '';
   // 刻度使用柱状图模拟，短设置1，长的设置3；构造一个数据
   for (var i = 0, len = 135; i <= len; i++) {
     if (i < 10 || i > 130) {
@@ -25,8 +34,7 @@ const Thermometer = ({ ...props }) => {
       }
     }
   }
-  //中间线的渐变色和文本内容
-  if (TP_value > 20) {
+  if (TP_value > highWire) {
     TP_txt = '温度偏高';
     Gradient.push(
       {
@@ -42,7 +50,7 @@ const Thermometer = ({ ...props }) => {
         color: '#E01F28',
       }
     );
-  } else if (TP_value > -20) {
+  } else if (TP_value > lowWire) {
     TP_txt = '温度正常';
     Gradient.push(
       {
@@ -61,26 +69,11 @@ const Thermometer = ({ ...props }) => {
       color: '#93FE94',
     });
   }
-  if (TP_value > 62) {
-    showValue = 62;
-  } else {
-    if (TP_value < -60) {
-      showValue = -60;
-    } else {
-      showValue = TP_value;
-    }
-  }
-  if (TP_value < -10) {
-    boxPosition = [65, -120];
-  }
-  leftColor = Gradient[Gradient.length - 1].color;
+  const leftColor = Gradient[Gradient.length - 1].color;
+
   // 因为柱状初始化为0，温度存在负值，所以加上负值60和空出距离10
   var option = {
     backgroundColor: '#0C2F6F',
-    title: {
-      text: '温度计',
-      show: false,
-    },
     yAxis: [
       {
         show: false,
@@ -142,7 +135,7 @@ const Thermometer = ({ ...props }) => {
       {
         name: '条',
         type: 'bar',
-        // 对应上面XAxis的第一个对)象配置
+        // 对应上面XAxis的第一个对象配置
         xAxisIndex: 0,
         data: [
           {
@@ -156,27 +149,22 @@ const Thermometer = ({ ...props }) => {
                 },
                 width: 200,
                 height: 100,
-                formatter:
-                  '{back| ' +
-                  TP_value +
-                  ' }{unit|°C}\n{downTxt|' +
-                  TP_txt +
-                  '}',
+                formatter: `{a| ${TP_value} }{b|°C}\n{c| ${TP_txt} }`,
                 rich: {
-                  back: {
+                  a: {
                     align: 'center',
                     lineHeight: 50,
                     fontSize: 40,
                     fontFamily: 'digifacewide',
                     color: leftColor,
                   },
-                  unit: {
+                  b: {
                     fontFamily: '微软雅黑',
                     fontSize: 15,
                     lineHeight: 50,
                     color: leftColor,
                   },
-                  downTxt: {
+                  c: {
                     lineHeight: 50,
                     fontSize: 25,
                     align: 'center',
