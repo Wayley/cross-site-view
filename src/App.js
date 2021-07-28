@@ -28,19 +28,15 @@ function App() {
           <MainLayout children={<DashboardList />} />
         </Route>
         <Route
-          path="/dashboard/:id"
           exact
+          path="/dashboard/:id"
           children={<DashboardDetail />}
         ></Route>
         <Route path="/404">
           <div>404</div>
         </Route>
         <Route path="*">
-          <Redirect
-            to={{
-              pathname: '/404',
-            }}
-          />
+          <Redirect to={{ pathname: '/404' }} />
         </Route>
       </Switch>
     </Router>
