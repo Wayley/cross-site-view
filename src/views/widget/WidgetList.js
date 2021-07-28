@@ -7,6 +7,7 @@ import GradientGauge from './gauge/GradientGauge';
 import MeterGauge from './gauge/MeterGauge';
 import CarPanel from './combination/CarPanel';
 import Thermometer from './combination/Thermometer';
+import Thermometer2 from './combination/Thermometer2';
 
 export default function WidgetList() {
   const widgetStyle = { height: 200 };
