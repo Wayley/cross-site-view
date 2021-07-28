@@ -139,9 +139,6 @@ const Thermometer = ({ ...props }) => {
               normal: {
                 show: true,
                 position: boxPosition,
-                backgroundColor: {
-                  image: 'plugin/subway_beijing/images/power/bg5Valuebg.png', //文字框背景图
-                },
                 width: 200,
                 height: 100,
                 formatter: `{a| ${TP_value} }{b|°C}\n{c| ${TP_txt} }`,
