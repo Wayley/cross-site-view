@@ -85,18 +85,13 @@ const Thermometer = ({ ...props }) => {
         },
       },
       {
-        show: false,
-        min: 0,
-        max: 50,
-      },
-      {
         type: 'category',
         data: ['', '', '', '', '', '', '', '', '', '', '°C'],
         position: 'left',
         offset: -80,
         axisLabel: {
           fontSize: 10,
-          color: 'white',
+          color: '#fff',
         },
         axisLine: {
           show: false,
